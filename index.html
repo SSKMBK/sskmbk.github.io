@@ -1,12 +1,43 @@
+<?php
+  //カウント数が記録してあるファイルを読み書きできるモードで開く
+  $fp = fopen('count.dat', 'r+b');
+
+  //ファイルを排他ロックする
+  flock($fp, LOCK_EX);
+
+  //ファイルからカウント数を取得する
+  $count = fgets($fp);
+
+  //カウント数を1増やす
+  $count++;
+?>
+
 <!DOCTYPE HEML>
 <html>
     <head>
     </head>
     <body>
         <h1>ここは笹かまぼこのgithub公開ページです。</h1>
-        <iframe frameborder="0" scrolling="no" src="https://script.google.com/macros/s/AKfycbxb5EhRD5Bd3qjfpsPhEdy6o1S6E8lsW0OU44FLXYfPFGXrov7ak9N51XxtDS4qEKJK/exec?url=https://sskmbk.github.io" title="アクセスカウンター"></iframe>
+        <div class="counter-area">
+            <span class="access-count"><?php echo $count; ?>
+            </span>
+        </div>
         <h2>githubプロフィール→<a href="https://github.com/SSKMBK">https://github.com/SSKMBK</a></h2>
         <h2>サーモンビンゴ作成機→<a href="https://sskmbk.github.io/salmonbingo_public">https://sskmbk.github.io/salmonbingo_public</a></h2>
         <h2>サーモンビンゴ作成機NW(スプラ3版)→<a href="https://sskmbk.github.io/salmonbingoNW_public">https://sskmbk.github.io/salmonbingoNW_public</a></h2>
     </body>
 </html>
+
+<?php
+  //ポインターをファイルの先頭に戻す
+  rewind($fp);
+
+  //最新のアクセス数をファイルに書き込む
+  fwrite($fp, $count);
+
+  //ファイルのロックを解除する
+  flock($fp, LOCK_UN);
+
+  //ファイルを閉じる
+  fclose($fp);
+?>
