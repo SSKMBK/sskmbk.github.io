@@ -1,17 +1,3 @@
-<?php
-  //カウント数が記録してあるファイルを読み書きできるモードで開く
-  $fp = fopen('count.dat', 'r+b');
-
-  //ファイルを排他ロックする
-  flock($fp, LOCK_EX);
-
-  //ファイルからカウント数を取得する
-  $count = fgets($fp);
-
-  //カウント数を1増やす
-  $count++;
-?>
-
 <!DOCTYPE HEML>
 <html>
     <head>
@@ -20,8 +6,7 @@
         <h1>ここは笹かまぼこのgithub公開ページです。</h1>
         <div class="counter-area">
             <h1>カウンターテスト↓</h1>
-            <span class="access-count"><?php echo $count; ?>
-            </span>
+            <iframe frameborder="0" loading="lazy" scrolling="no" src="https://script.google.com/macros/s/AKfycbxb5EhRD5Bd3qjfpsPhEdy6o1S6E8lsW0OU44FLXYfPFGXrov7ak9N51XxtDS4qEKJK/exec?url=https://sskmbk.github.io title="アクセスカウンター"></iframe>
         </div>
         <h2>githubプロフィール→<a href="https://github.com/SSKMBK">https://github.com/SSKMBK</a></h2>
         <h2>サーモンビンゴ作成機→<a href="https://sskmbk.github.io/salmonbingo_public">https://sskmbk.github.io/salmonbingo_public</a></h2>
