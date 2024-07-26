@@ -13,17 +13,3 @@
         <h2>サーモンビンゴ作成機NW(スプラ3版)→<a href="https://sskmbk.github.io/salmonbingoNW_public">https://sskmbk.github.io/salmonbingoNW_public</a></h2>
     </body>
 </html>
-
-<?php
-  //ポインターをファイルの先頭に戻す
-  rewind($fp);
-
-  //最新のアクセス数をファイルに書き込む
-  fwrite($fp, $count);
-
-  //ファイルのロックを解除する
-  flock($fp, LOCK_UN);
-
-  //ファイルを閉じる
-  fclose($fp);
-?>
